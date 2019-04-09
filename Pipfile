@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 numpy = "*"
-slam_gmapping = {path = "./dep/slam_gmapping", editable = true}
+yapf = {path = "./dep/yapf", editable = true}
 
 [requires]
 python_version = "3.5"
