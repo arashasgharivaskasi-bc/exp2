@@ -6,8 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-numpy = "*"
-yapf = {path = "./dep/yapf", editable = true}
+bc_gym_planning_env = {path = "./dep/bc_gym_planning_env", editable = true}
 
 [requires]
 python_version = "3.5"

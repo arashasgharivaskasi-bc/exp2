@@ -17,8 +17,7 @@ setup(
     url='https://github.com/arashasgharivaskasi-bc/exp2',
     download_url='',
     license='Braincorp',
-    install_requires=['numpy>=1.13.3',
-                      'opencv-python'],
+    install_requires=[],
         extras_require={
         'tests': ['pytest==4.3.0',
                   'pytest-pep8==1.0.6',
