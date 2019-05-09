@@ -1,6 +1,7 @@
 # exp2
 Interface for running bc_exploration functionalities in the gym environment.
 
-![Alt Text](doc/ColoredEgoCostmapRandomAisleTurnEnv.gif)
+# Demo
+![Alt Text](demo/ColoredEgoCostmapRandomAisleTurnEnv.gif)
 
-![Alt Text](doc/ComplexCostmapRandomAisleTurnEnv.gif)
+![Alt Text](demo/ComplexCostmapRandomAisleTurnEnv.gif)
