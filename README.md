@@ -2,4 +2,4 @@
 Interface for running bc_exploration functionalities in the gym environment.
 
 # Demo
-![Alt Text](demo/ComplexCostmapRandomAisleTurnEnv.gif)
+![Alt Text](demo/ColoredEgoCostmapRandomAisleTurnEnv.gif)
