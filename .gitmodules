@@ -3,4 +3,4 @@
 	url = https://github.com/braincorp/bc-gym-planning-env.git
 [submodule "dep/bc_exploration"]
 	path = dep/bc_exploration
-	url = https://github.com/braincorp/bc_exploration.git
+	url = https://github.com/arashasgharivaskasi-bc/bc_exploration.git
