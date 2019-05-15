@@ -6,9 +6,8 @@ Before cloning the repository make sure that you have installed pipenv (preferab
 
 ```shell
 git clone --recursive https://github.com/arashasgharivaskasi-bc/exp2.git
-cd exp2/dep/bc_exploration/scripts
-bash build_exploration
-cd ../../..
+cd exp2
+bash dep/bc_exploration/scripts/build_exploration
 pipenv install
 ```
 
