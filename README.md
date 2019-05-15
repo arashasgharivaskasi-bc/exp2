@@ -9,6 +9,7 @@ git clone --recursive https://github.com/arashasgharivaskasi-bc/exp2.git
 cd exp2
 bash dep/bc_exploration/scripts/build_exploration
 pipenv install --skip-lock
+pipenv shell
 ```
 
 Now you can run exp2/run_frontiers.py
