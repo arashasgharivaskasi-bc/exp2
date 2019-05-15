@@ -8,16 +8,9 @@ from bc_gym_planning_env.envs.mini_env import MiniEnv, RandomMiniEnv
 from bc_gym_planning_env.envs.synth_turn_env import AisleTurnEnv, RandomAisleTurnEnv, ColoredCostmapRandomAisleTurnEnv, ColoredEgoCostmapRandomAisleTurnEnv
 
 from algorithms.frontier_based_exploration import run_frontier_exploration
-
-# from agents.frontier_agent import FrontierAgent
-# from footprints.footprint_points import get_tricky_circular_footprint, get_tricky_oval_footprint, get_jackal_footprint
-# from footprints.footprints import CustomFootprint
-# from sensors.sensors import Lidar
-# from envs.grid_world import GridWorld
-# from mapping.costmap import Costmap
 from utilities.paths import get_maps_dir, get_exploration_dir
 
-def create_gym_environment_from_parameters(env_mode,env_params=None):
+def create_gym_environment_from_parameters(env_mode):
     """
     Creates a random gym environment and stores it in the "maps" directory
     :param env_mode: indicates the type of environment in which we want to run the exploration algorithm
@@ -50,8 +43,11 @@ def create_gym_environment_from_parameters(env_mode,env_params=None):
     occupancy_grid[occupancy_grid != 0] = 255
     occupancy_grid = -1 * occupancy_grid + 255
 
-    # map_filename = os.path.join(get_maps_dir(), 'myMap.png')
-    map_filename = os.path.join(get_maps_dir(), 'gym/myMap.png')
+    path = os.path.join(get_maps_dir(), 'gym')
+    if not os.path.exists(path):
+        os.mkdir(path)
+
+    map_filename = os.path.join(path, 'myMap.png')
     cv2.imwrite(map_filename, occupancy_grid)
 
     return map_filename
