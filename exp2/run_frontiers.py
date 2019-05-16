@@ -13,8 +13,8 @@ from utilities.paths import get_maps_dir, get_exploration_dir
 def create_gym_environment_from_parameters(env_mode):
     """
     Creates a random gym environment and stores it in the "maps" directory
-    :param env_mode: indicates the type of environment in which we want to run the exploration algorithm
-    :return map_filename: map filename
+    :param env_mode string: indicates the type of environment in which we want to run the exploration algorithm
+    :return map_filename string: map filename
     """
     if env_mode == "MiniEnv":
         occupancy_grid = MiniEnv().get_state().costmap.get_data()
@@ -59,7 +59,7 @@ def main():
     """
     np.random.seed(3)
     _, percent_explored, iterations_taken, _ = \
-        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("RandomAisleTurnEnv"),
+        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("ColoredEgoCostmapRandomAisleTurnEnv"),
                                  params_filename=os.path.join(get_exploration_dir(),"params/params.yaml"),
                                  map_resolution=0.03,
                                  start_state=None,
@@ -67,7 +67,7 @@ def main():
                                  completion_percentage=10,
                                  max_exploration_iterations=None,
                                  render_mode='gym',
-                                 render_size_scale=2.0,
+                                 render_size_scale=50.0,
                                  render_interval=5)
 
     print("Map", "{:.2f}".format(percent_explored * 100), "\b% explored!",
