@@ -59,13 +59,14 @@ def main():
     """
     np.random.seed(3)
     _, percent_explored, iterations_taken, _ = \
-        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("ColoredEgoCostmapRandomAisleTurnEnv"),
+        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("RandomAisleTurnEnv"),
                                  params_filename=os.path.join(get_exploration_dir(),"params/params.yaml"),
                                  map_resolution=0.03,
                                  start_state=None,
                                  sensor_range=10.0,
                                  completion_percentage=10,
                                  max_exploration_iterations=None,
+                                 render_mode='gym',
                                  render_size_scale=2.0,
                                  render_interval=5)
 
