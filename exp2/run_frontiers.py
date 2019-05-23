@@ -10,8 +10,8 @@ import numpy as np
 
 # from bc_gym_planning_env.envs.mini_env import MiniEnv, RandomMiniEnv, AisleTurnEnv
 from bc_gym_planning_env.envs.synth_turn_env import RandomAisleTurnEnv,\
-                                                    ColoredCostmapRandomAisleTurnEnv,\
-                                                    ColoredEgoCostmapRandomAisleTurnEnv
+    ColoredCostmapRandomAisleTurnEnv,\
+    ColoredEgoCostmapRandomAisleTurnEnv
 from bc_gym_planning_env.utilities.costmap_2d import CostMap2D
 
 
@@ -23,10 +23,11 @@ from sensors.sensors import Lidar
 from utilities.paths import get_maps_dir, get_exploration_dir
 from utilities.util import xy_to_rc, which_coords_in_bounds, scan_to_points
 
+
 def create_gym_environment_from_parameters(env_mode):
     """
     Creates a random gym environment and stores it in the "maps" directory
-    :param env_mode string: indicates the type of environment in which we want to run the exploration algorithm
+    :param env_mode str: indicates the type of environment in which we want to run the exploration algorithm
     :return map_filename string: map filename
     """
     if env_mode == "MiniEnv":
@@ -34,7 +35,7 @@ def create_gym_environment_from_parameters(env_mode):
         # occupancy_grid = MiniEnv().get_state().costmap.get_data()
     elif env_mode == "RandomMiniEnv":
         raise NotImplementedError
-            # occupancy_grid = RandomMiniEnv().get_state().costmap.get_data()
+        # occupancy_grid = RandomMiniEnv().get_state().costmap.get_data()
     elif env_mode == "AisleTurnEnv":
         raise NotImplementedError
         # occupancy_grid = AisleTurnEnv().get_state().costmap.get_data()
@@ -45,16 +46,17 @@ def create_gym_environment_from_parameters(env_mode):
     elif env_mode == "ColoredEgoCostmapRandomAisleTurnEnv":
         occupancy_grid = ColoredEgoCostmapRandomAisleTurnEnv().get_state().costmap.get_data()
     elif env_mode == "ComplexCostmapRandomAisleTurnEnv":
-        complexity = np.random.randint(2,5)
-        map_bundle = np.zeros([500,500,complexity])
+        complexity = np.random.randint(2, 5)
+        map_bundle = np.zeros([500, 500, complexity])
         for m in range(complexity):
-            map_bundle[:,:,m] = cv2.resize(ColoredCostmapRandomAisleTurnEnv().get_state().costmap.get_data(),(500,500))
-        occupancy_grid = np.sum(map_bundle,axis = 2)
+            map_bundle[:, :, m] = \
+                cv2.resize(ColoredCostmapRandomAisleTurnEnv().get_state().costmap.get_data(), (500, 500))
+        occupancy_grid = np.sum(map_bundle, axis=2)
     else:
-        raise NameError("Invalid gym envirment type!\nPlease choose one of the following gym environments:"
-            "\nMiniEnv \\ RandomMiniEnv \\ AisleTurnEnv \\ "
-            "RandomAisleTurnEnv \\ ColoredCostmapRandomAisleTurnEnv \\ "
-            "ColoredEgoCostmapRandomAisleTurnEnv \\ ComplexCostmapRandomAisleTurnEnv")
+        raise NameError("Invalid gym enviroment type!\nPlease choose one of the following gym environments:"
+                        "\nMiniEnv \\ RandomMiniEnv \\ AisleTurnEnv \\ "
+                        "RandomAisleTurnEnv \\ ColoredCostmapRandomAisleTurnEnv \\ "
+                        "ColoredEgoCostmapRandomAisleTurnEnv \\ ComplexCostmapRandomAisleTurnEnv")
 
     occupancy_grid[occupancy_grid != 0] = 255
     occupancy_grid = -1 * occupancy_grid + 255
@@ -78,12 +80,12 @@ def visualize_in_gym(gym_env, exp_map, path, pose):
     :param pose array(3)[float]: corresponds to the pose of the robot [x, y, theta]
     """
 
-    gym_compat_map = np.zeros(exp_map.data.shape,dtype=np.uint8)
+    gym_compat_map = np.zeros(exp_map.data.shape, dtype=np.uint8)
     gym_compat_map[exp_map.data == Costmap.OCCUPIED] = CostMap2D.LETHAL_OBSTACLE
     gym_compat_map[exp_map.data == Costmap.FREE] = CostMap2D.FREE_SPACE
     gym_compat_map[exp_map.data == Costmap.UNEXPLORED] = CostMap2D.NO_INFORMATION
 
-    gym_costmap = CostMap2D(np.flipud(gym_compat_map),exp_map.resolution,exp_map.origin.copy())
+    gym_costmap = CostMap2D(np.flipud(gym_compat_map), exp_map.resolution, exp_map.origin.copy())
 
     gym_state = gym_env.get_state()
 
@@ -91,8 +93,8 @@ def visualize_in_gym(gym_env, exp_map, path, pose):
         gym_state.path = path
         gym_state.original_path = path
     else:
-        gym_state.path = pose[None,:]
-        gym_state.original_path = pose[None,:]
+        gym_state.path = pose[None, :]
+        gym_state.original_path = pose[None, :]
 
     gym_state.costmap = gym_costmap
 
@@ -191,7 +193,6 @@ def run_frontier_exploration(map_filename, params_filename, start_state, sensor_
         else:
             raise NameError("Invalid rendering method.\nPlease choose one of \"exp\" or \"gym\" methods.")
 
-
     iteration = 0
     is_last_plan = False
     was_successful = True
@@ -256,6 +257,7 @@ def run_frontier_exploration(map_filename, params_filename, start_state, sensor_
 
     return occupancy_map, percentage_explored, iteration, was_successful
 
+
 def main():
     """
     Main Function
@@ -263,7 +265,7 @@ def main():
     np.random.seed(3)
     _, percent_explored, iterations_taken, _ = \
         run_frontier_exploration(map_filename=create_gym_environment_from_parameters("RandomAisleTurnEnv"),
-                                 params_filename=os.path.join(get_exploration_dir(),"params/params.yaml"),
+                                 params_filename=os.path.join(get_exploration_dir(), "params/params.yaml"),
                                  map_resolution=0.03,
                                  start_state=None,
                                  sensor_range=10.0,
