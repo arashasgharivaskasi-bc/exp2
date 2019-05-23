@@ -15,4 +15,4 @@ pipenv shell
 Now you can run exp2/run_frontiers.py
 
 # Demo
-![Center](demo/ColoredEgoCostmapRandomAisleTurnEnv.gif)
+![Center](demo/gym_visualization1.gif)
