@@ -12,7 +12,6 @@ from bc_gym_planning_env.utilities.costmap_2d import CostMap2D
 
 
 from algorithms.frontier_based_exploration import create_frontier_agent_from_params, visualize
-
 from envs.grid_world import GridWorld
 from mapping.costmap import Costmap
 from mapping.log_odds_mapper import LogOddsMapper
