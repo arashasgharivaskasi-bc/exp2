@@ -1,11 +1,15 @@
+"""run_frontiers.py
+Interface for integrating bc_exploration functions in bc_gym_planning_env
+Contains code for exploration and rendering in gym environment
+"""
 from __future__ import print_function, absolute_import, division
 
 import os
 import cv2
 import numpy as np
 
-from bc_gym_planning_env.envs.mini_env import MiniEnv, RandomMiniEnv
-from bc_gym_planning_env.envs.synth_turn_env import AisleTurnEnv, RandomAisleTurnEnv,\
+# from bc_gym_planning_env.envs.mini_env import MiniEnv, RandomMiniEnv, AisleTurnEnv
+from bc_gym_planning_env.envs.synth_turn_env import RandomAisleTurnEnv,\
                                                     ColoredCostmapRandomAisleTurnEnv,\
                                                     ColoredEgoCostmapRandomAisleTurnEnv
 from bc_gym_planning_env.utilities.costmap_2d import CostMap2D
@@ -26,11 +30,14 @@ def create_gym_environment_from_parameters(env_mode):
     :return map_filename string: map filename
     """
     if env_mode == "MiniEnv":
-        occupancy_grid = MiniEnv().get_state().costmap.get_data()
+        raise NotImplementedError
+        # occupancy_grid = MiniEnv().get_state().costmap.get_data()
     elif env_mode == "RandomMiniEnv":
-        occupancy_grid = RandomMiniEnv().get_state().costmap.get_data()
+        raise NotImplementedError
+            # occupancy_grid = RandomMiniEnv().get_state().costmap.get_data()
     elif env_mode == "AisleTurnEnv":
-        occupancy_grid = AisleTurnEnv().get_state().costmap.get_data()
+        raise NotImplementedError
+        # occupancy_grid = AisleTurnEnv().get_state().costmap.get_data()
     elif env_mode == "RandomAisleTurnEnv":
         occupancy_grid = RandomAisleTurnEnv().get_state().costmap.get_data()
     elif env_mode == "ColoredCostmapRandomAisleTurnEnv":
@@ -117,6 +124,7 @@ def run_frontier_exploration(map_filename, params_filename, start_state, sensor_
                                   truth environment to explore, note that 1.0 is not always reachable because of
                                   footprint.
     :param render bool: whether or not to visualize
+    :param render_mode str: specify rendering function (bc_exploration or bc_gym_planning_env)
     :param render_interval int: visualize every render_interval iterations
     :param render_size_scale Tuple(int): (h, w), the size of the render window in pixels
     :param completion_check_interval int: check for exploration completion every completion_check_interval iterations
@@ -254,7 +262,7 @@ def main():
     """
     np.random.seed(3)
     _, percent_explored, iterations_taken, _ = \
-        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("ColoredEgoCostmapRandomAisleTurnEnv"),
+        run_frontier_exploration(map_filename=create_gym_environment_from_parameters("RandomAisleTurnEnv"),
                                  params_filename=os.path.join(get_exploration_dir(),"params/params.yaml"),
                                  map_resolution=0.03,
                                  start_state=None,
