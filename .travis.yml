@@ -5,6 +5,7 @@ python:
 
 script:
      # install the package and test
+     - pip install pipenv
      - pipenv install --skip-lock
      - pip install -e .[tests]
      - py.test --pep8 -m pep8 -n8
