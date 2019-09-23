@@ -11,4 +11,4 @@ bc_exploration = {path = "./dep/bc_exploration", editable = true}
 
 
 [requires]
-python_version = "3.5"
+python_version = "2.7"
