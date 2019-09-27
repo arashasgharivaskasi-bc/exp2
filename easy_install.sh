@@ -6,5 +6,3 @@ git checkout feature/add-initial-raytracing-code
 git pull --recurse-submodules
 cd ../..
 pipenv install
-pipenv shell
-python setup.py install

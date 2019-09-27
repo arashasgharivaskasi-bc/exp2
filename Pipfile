@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 bc_gym_planning_env = {path = "./dep/bc_gym_planning_env", editable = true}
 bc_exploration = {path = "./dep/bc_exploration", editable = true}
+exp2 = {path = "./", editable = true}
 
 
 [requires]
