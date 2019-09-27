@@ -7,9 +7,7 @@ Before cloning the repository make sure that you have installed `pipenv`.
 ```shell
 git clone --recursive https://github.com/arashasgharivaskasi-bc/exp2.git
 cd exp2
-bash dep/bc_exploration/scripts/build_exploration
-pipenv install --skip-lock
-pipenv shell
+bash easy_install.sh
 ```
 
 Now you can run exp2/run_frontiers_in_gym.py
