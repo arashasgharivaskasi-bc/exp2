@@ -63,7 +63,7 @@ def run_frontiers_in_gym(map_filename, params_filename, start_state, sensor_rang
                       resolution=map_resolution,
                       origin=np.array([0., 0.]))
     map_data = to_brain_costmap(map).get_data()
-    costmap = gym_CostMap(data=map_data[:,:,0],
+    costmap = gym_CostMap(data=map_data[:, :, 0],
                           resolution=map_resolution,
                           origin=np.array([0., 0.]))
 
