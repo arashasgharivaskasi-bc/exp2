@@ -15,13 +15,13 @@ from bc_gym_planning_env.envs.synth_turn_env import RandomAisleTurnEnv,\
 from bc_gym_planning_env.utilities.costmap_2d import CostMap2D
 
 
-from algorithms.frontier_based_exploration import create_frontier_agent_from_params, visualize
-from envs.grid_world import GridWorld
-from mapping.costmap import Costmap
-from mapping.log_odds_mapper import LogOddsMapper
-from sensors.sensors import Lidar
-from utilities.paths import get_maps_dir, get_exploration_dir
-from utilities.util import xy_to_rc, which_coords_in_bounds, scan_to_points
+from bc_exploration.algorithms.frontier_based_exploration import create_frontier_agent_from_params, visualize
+from bc_exploration.envs.grid_world import GridWorld
+from bc_exploration.mapping.costmap import Costmap
+from bc_exploration.mapping.log_odds_mapper import LogOddsMapper
+from bc_exploration.sensors.sensors import Lidar
+from bc_exploration.utilities.paths import get_maps_dir, get_exploration_dir
+from bc_exploration.utilities.util import xy_to_rc, which_coords_in_bounds, scan_to_points
 
 
 def create_gym_environment_from_parameters(env_mode):

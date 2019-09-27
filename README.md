@@ -1,8 +1,8 @@
 # exp2
-Interface for running bc_exploration functionalities in the gym environment.
+Interface for running bc_exploration frontier-cased exploration in BrainCorp's gym environment.
 
 # Installation
-Before cloning the repository make sure that you have installed `pipenv` (preferably via Homebrew) and `python3-tk`.
+Before cloning the repository make sure that you have installed `pipenv`.
 
 ```shell
 git clone --recursive https://github.com/arashasgharivaskasi-bc/exp2.git
@@ -12,7 +12,7 @@ pipenv install --skip-lock
 pipenv shell
 ```
 
-Now you can run exp2/run_frontiers.py
+Now you can run exp2/run_frontiers_in_gym.py
 
 # Demo
-![Center](demo/gym_visualization1.gif)
+![Center](demo/gym_visualization2.gif)

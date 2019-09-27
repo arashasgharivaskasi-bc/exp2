@@ -13,7 +13,7 @@ setup(
     description='Brain Corp experimental exploration project',
     long_description=long_description,
     author='Arash Asgharivaskasi',
-    author_email='c_asgharivaskasi@braincorporation.com',
+    author_email='ara.asghary@gmail.com',
     url='https://github.com/arashasgharivaskasi-bc/exp2',
     download_url='',
     license='Braincorp',
