@@ -35,6 +35,7 @@ def to_brain_costmap(exp_costmap):
     return gym_CostMap(data=np.flipud(costmap_data), resolution=exp_costmap.resolution,
                        origin=exp_costmap.origin.astype(np.float64))
 
+
 def run_frontiers_in_gym(map_filename, params_filename, start_state, sensor_range,
                          map_resolution, render=True, render_interval=10,
                          max_exploration_iterations=None):
@@ -110,7 +111,7 @@ def run_frontiers_in_gym(map_filename, params_filename, start_state, sensor_rang
 
     env = PlanEnv(
         costmap=gym_initial_map,
-        path=start_state[None,:],
+        path=start_state[None, :],
         params=env_params
     )
 
@@ -159,7 +160,7 @@ def run_frontiers_in_gym(map_filename, params_filename, start_state, sensor_rang
                 footprint_coords = footprint_coords[which_coords_in_bounds(footprint_coords, occupancy_map.get_shape())]
                 occupancy_map.data[footprint_coords[:, 0], footprint_coords[:, 1]] = exp_CostMap.FREE
 
-            obs, reward, done, info = env.simple_step(desired_pose)
+            obs, _, done, _ = env.simple_step(desired_pose)
             pose = obs.pose
             scan_angles, scan_ranges = obs.get_lidar_scan()
             occupancy_map = mapper.update(state=pose, scan_angles=scan_angles, scan_ranges=scan_ranges)
@@ -188,6 +189,7 @@ def run_frontiers_in_gym(map_filename, params_filename, start_state, sensor_rang
 
     return occupancy_map, iteration, was_successful
 
+
 def main():
     """
     Main Function
@@ -206,6 +208,7 @@ def main():
     plt.figure()
     plt.imshow(occupancy_map.data.astype(np.uint8), cmap='gray')
     plt.show()
+
 
 if __name__ == '__main__':
     main()
