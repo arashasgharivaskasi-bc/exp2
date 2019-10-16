@@ -6,8 +6,7 @@ python:
 script:
      # install the package and test
      - pip install pipenv
-     - bash dep/bc_exploration/scripts/build_exploration
-     - pipenv install --skip-lock
+     - bash easy_install.sh
      - pip install -e .[tests]
      - py.test --pep8 -m pep8 -n8
      - py.test -n8
