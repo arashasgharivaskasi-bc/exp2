@@ -1,5 +1,5 @@
 # exp2
-Interface for running bc_exploration frontier-cased exploration in BrainCorp's gym environment.
+Interface for running bc_exploration frontier-based exploration in BrainCorp's gym environment.
 
 # Installation
 Before cloning the repository make sure that you have installed `pipenv`.
